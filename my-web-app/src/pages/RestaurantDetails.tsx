@@ -1,76 +1,56 @@
-import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import type { Restaurant, ApiResponse } from "../types/Restaurant"
-
-const API_URL = import.meta.env.VITE_API_URL
+import { useMemo } from "react"
+import { useRestaurants } from "../hooks/useRestaurants"
+import type { Restaurant } from "../types/Restaurant"
 
 export default function RestaurantDetails() {
 
   const { objectId } = useParams()
   const navigate = useNavigate()
+  const { data: restaurants, isLoading } = useRestaurants()
 
-  const [restaurant, setRestaurant] = useState<Restaurant | null>(null)
+  const restaurant = useMemo<Restaurant | undefined>(() => {
+    if (!restaurants || !objectId) return undefined
+    return restaurants.find(r => r.objectId === objectId)
+  }, [restaurants, objectId])
 
-  useEffect(() => {
+  const sortedDeals = useMemo(() => {
+    if (!restaurant) return []
+    return [...restaurant.deals].sort(
+      (a, b) => Number(b.discount) - Number(a.discount)
+    )
+  }, [restaurant])
 
-    const fetchRestaurant = async () => {
-
-      const res = await fetch(API_URL)
-      const data: ApiResponse = await res.json()
-
-      const foundRestaurant = data.restaurants.find(
-        r => r.objectId === objectId
-      )
-
-      if (!foundRestaurant) return
-
-      // Sort deals by highest discount
-      const sortedDeals = [...foundRestaurant.deals].sort(
-        (a, b) => Number(b.discount) - Number(a.discount)
-      )
-
-      setRestaurant({
-        ...foundRestaurant,
-        deals: sortedDeals
-      })
-    }
-
-    fetchRestaurant()
-
-  }, [objectId])
-
-  if (!restaurant) return <div>Loading...</div>
+  if (isLoading) return <div>Loading restaurant...</div>
+  if (!restaurant) return <div>Restaurant not found</div>
 
   return (
     <div>
-
-      <button onClick={() => navigate(-1)}>
-        Back
-      </button>
 
       <h1>{restaurant.name}</h1>
 
       <img
         src={restaurant.imageLink}
+        alt={restaurant.name}
         width="300"
       />
 
-      <p>{restaurant.address1}, {restaurant.suburb}</p>
+      <p>
+        {restaurant.address1}, {restaurant.suburb}
+      </p>
 
-      <p>Open: {restaurant.open} - {restaurant.close}</p>
+      <p>
+        Hours: {restaurant.open} - {restaurant.close}
+      </p>
 
       <h2>Deals</h2>
 
-      {restaurant.deals.map(deal => (
-
+      {sortedDeals.map(deal => (
         <div key={deal.objectId}>
-
-          <p>Discount: {deal.discount}%</p>
+          <strong>{deal.discount}% OFF</strong>
           <p>Dine In: {deal.dineIn}</p>
           <p>Qty Left: {deal.qtyLeft}</p>
-
         </div>
-
       ))}
 
     </div>

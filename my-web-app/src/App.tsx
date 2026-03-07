@@ -7,23 +7,18 @@ export default function App() {
 
   return (
     <BrowserRouter>
-
       <Routes>
-
         {/* Restaurant list page */}
         <Route
           path="/"
           element={<RestaurantList />}
         />
-
-        {/* Restaurant details page using objectId */}
+        {/* Restaurant details page using id */}
         <Route
           path="/restaurant/:objectId"
           element={<RestaurantDetails />}
         />
-
       </Routes>
-
     </BrowserRouter>
   )
 }
