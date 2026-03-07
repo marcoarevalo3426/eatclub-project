@@ -3,6 +3,7 @@ import { useRestaurants } from "../hooks/useRestaurants"
 import RestaurantCard from "../components/RestaurantCard"
 import { useDebounce } from "use-debounce"
 import type { Deal } from "../types/Restaurant"
+import { topMenu, searchBar } from "../styles/restaurant-list-styles"
 
 export default function RestaurantList() {
 
@@ -65,14 +66,25 @@ export default function RestaurantList() {
   if (isLoading) return <div>Loading restaurants...</div>
 
   return (
-    <div>
+    <>
+      <div className="container">
+        <div css={topMenu}>
+          <div className="accountIcon"><a href="#"><img src="src/assets/account-icon.png" width="20"></img></a></div>
+          <div className="eatClubLogo"><a href="#"><img src="src/assets/eatclub-logo.png" width="25"></img></a></div>
+          <div className="filtersIcon"><a href="#"><img src="src/assets/filters-icon.png" width="25"></img></a></div>
+        </div>
+      </div>
+      <div css={searchBar}>
+          <div className="searchIcon"><img src="src/assets/search-icon.png" width="20"></img></div>
+          <input
+            placeholder="e.g. chinese, pizza"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="searchInput"
+          />
+        </div>
 
-      <input
-        placeholder="Search restaurants"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
+      <div className="container">
       {filteredRestaurants.map(r => {
 
         const bestDeal = getBestDeal(r.deals)
@@ -87,7 +99,7 @@ export default function RestaurantList() {
           />
         )
       })}
-
-    </div>
+      </div>
+    </>
   )
 }

@@ -6,3 +6,10 @@ export const containerStyles = css`
   border-radius: 8px;
   font-weight: bold;
 `;
+
+export const restaurantListTitle = css`
+
+      font-weight: bold;
+      font-style: normal;
+`;
+
