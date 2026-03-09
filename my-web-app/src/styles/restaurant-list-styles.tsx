@@ -1,28 +1,5 @@
 import { css } from '@emotion/react'
 
-export const topMenu = css`
-    margin-top:30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    .accountIcon {
-       display: inline-flex;
-       margin-right: auto;
-       cursor: "pointer";
-    }
-    .eatClubLogo {
-        margin:0;
-        padding:0;
-        cursor: "pointer";
-    }
-    .filtersIcon {
-        display: flex;
-        margin-left: auto;
-        cursor: "pointer";
-    }
-
-`;
 
 export const searchBar = css`
     display: flex;
@@ -43,3 +20,4 @@ export const searchBar = css`
         }
     }
 `;
+

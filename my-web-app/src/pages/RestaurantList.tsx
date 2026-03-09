@@ -3,7 +3,8 @@ import { useRestaurants } from "../hooks/useRestaurants"
 import RestaurantCard from "../components/RestaurantCard"
 import { useDebounce } from "use-debounce"
 import type { Deal } from "../types/Restaurant"
-import { topMenu, searchBar } from "../styles/restaurant-list-styles"
+import { searchBar } from "../styles/restaurant-list-styles"
+import { topMenu } from "../styles/eatclub-common-styles"
 
 export default function RestaurantList() {
 

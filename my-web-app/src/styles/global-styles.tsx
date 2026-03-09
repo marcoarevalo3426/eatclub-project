@@ -21,6 +21,7 @@ const globalStyles = css`
     line-height: 1.6;
     background-color: #fff;
     color: #222;
+    min-width: 320px;
   }
 
   img,

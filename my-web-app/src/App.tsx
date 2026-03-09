@@ -17,7 +17,7 @@ export default function App() {
         />
         {/* Restaurant details page using id */}
         <Route
-          path="/restaurant/:objectId"
+          path="/:objectId"
           element={<RestaurantDetails />}
         />
       </Routes>

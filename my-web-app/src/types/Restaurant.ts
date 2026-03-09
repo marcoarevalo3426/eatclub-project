@@ -21,3 +21,10 @@ export interface Restaurant {
 export interface ApiResponse {
   restaurants: Restaurant[]
 }
+
+export interface CardProps {
+  restaurant: Restaurant
+  bestDiscount: string
+  dealTime: string
+  dineIn: string
+}

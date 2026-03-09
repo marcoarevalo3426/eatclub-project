@@ -8,7 +8,7 @@ export const restaurantCard = css`
         display: block;
     }
     .cardImage {
-        max-height: 400px;
+        max-height: 200px;
         width: 100%;
         border-radius: 5px;
     }
@@ -41,7 +41,7 @@ export const restaurantCard = css`
             background-position: right;
             margin-right: 7px;
             font-size: 13px;
-            &:last-child {
+            &:last-of-type {
                 background-image: none;
                 margin-right: none;
             }
@@ -50,7 +50,6 @@ export const restaurantCard = css`
     .cardTitleFavIconHolder {
         display: flex;
     }  
-
 `;
 
 export const discountBadge = css`
@@ -65,11 +64,11 @@ export const discountBadge = css`
     box-shadow: 2px 2px 3px #7d7d7d;
     line-height: 1.3;
     .discountAmount {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 500;
     }
     .discountTimeBeforeExpiry {
-        font-size: 12px;
+        font-size: 10px;
     }
 `;
 
@@ -79,8 +78,8 @@ export const favIconButton = css`
     width: 35px;
     height: 35px;
     img {
-    width: 35px;
-    height: 35px;
+        width: 35px;
+        height: 35px;
     }
 `;
 
