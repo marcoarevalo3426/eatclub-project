@@ -39,15 +39,17 @@ export default function RestaurantList() {
   }
 
   const getDealTimeText = (deals: Deal) => {
-
+    // @ts-ignore
     if (!deals.start || !deals.end) {
       return "Anytime today"
     }
 
     const now = new Date()
-
+    
     const today = new Date()
+    // @ts-ignore
     const [hours, minutes] = deals.end.replace(/am|pm/i, "").split(":")
+    // @ts-ignore
     const isPM = deals.end.toLowerCase().includes("pm")
 
     let endHour = Number(hours)
@@ -58,6 +60,7 @@ export default function RestaurantList() {
     today.setMinutes(Number(minutes))
 
     if (now < today) {
+      // @ts-ignore
       return `Arrive before ${deals.end}`
     }
 

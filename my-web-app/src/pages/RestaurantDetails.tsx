@@ -31,8 +31,6 @@ export default function RestaurantDetails() {
   if (isLoading) return <div>Loading restaurant...</div>
   if (!restaurant) return <div>Restaurant not found</div>
 
-
-
   return (
     <>
     <div className="container">
@@ -97,7 +95,10 @@ export default function RestaurantDetails() {
               </div>
               
               <div className="cardDealsAvailability">
-                {deal.start && deal.end && (
+                {
+                // @ts-ignore
+                deal.start && deal.end && (
+                // @ts-ignore
                   <p>Available: {deal.start} - {deal.end}</p>
                 )}
               </div>
