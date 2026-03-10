@@ -29,6 +29,3 @@ export interface CardProps {
   dineIn: string
 }
 
-export interface SpecificStatusData {
-  status: "start" | "end" | "stop";
-}

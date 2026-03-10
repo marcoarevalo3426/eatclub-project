@@ -7,7 +7,7 @@ export const useRestaurants = () => {
   return useQuery<Restaurant[]>({
     queryKey: ["restaurants"],
     queryFn: fetchRestaurants,
-    staleTime: 1000 * 60 * 5
+    staleTime: 1000 * 60 * 5 /* Cache restaurants for 5 minutes. */
   })
 
 }
