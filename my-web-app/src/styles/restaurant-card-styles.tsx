@@ -1,6 +1,14 @@
 import { css } from '@emotion/react'
 
 export const restaurantCard = css`
+
+    @media (min-width: 768px) {
+        float: left;
+        width: 350px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        min-height: 350px;
+    }
     margin-top:20px;
     cursor: "pointer";
     .cardImageContentContainer {

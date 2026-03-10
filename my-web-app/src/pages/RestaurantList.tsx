@@ -4,7 +4,7 @@ import RestaurantCard from "../components/RestaurantCard"
 import { useDebounce } from "use-debounce"
 import type { Deal } from "../types/Restaurant"
 import { searchBar } from "../styles/restaurant-list-styles"
-import { topMenu } from "../styles/eatclub-common-styles"
+import { topMenu} from "../styles/eatclub-common-styles"
 
 export default function RestaurantList() {
 
@@ -94,13 +94,15 @@ export default function RestaurantList() {
         const bestDeal = getBestDeal(r.deals)
 
         return (
-          <RestaurantCard
-            key={r.objectId}
-            restaurant={r}
-            bestDiscount={bestDeal.discount}
-            dealTime={getDealTimeText(bestDeal)}
-            dineIn={bestDeal.dineIn}
-          />
+
+            <RestaurantCard
+              key={r.objectId}
+              restaurant={r}
+              bestDiscount={bestDeal.discount}
+              dealTime={getDealTimeText(bestDeal)}
+              dineIn={bestDeal.dineIn}
+            />
+  
         )
       })}
       </div>
